@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
         btnSettings = findViewById(R.id.btnSettings)
         btnDebug = findViewById(R.id.btnDebugScreen)
         btnAbout = findViewById(R.id.btnAbout)
+        btnAbout.bringToFront()
+
 
         defaultTextColor = txtSpeed.currentTextColor
 
@@ -85,7 +87,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, DebugActivity::class.java))
         }
 
-        btnAbout.setOnClickListener { showAboutDialog() }
+        btnAbout.setOnClickListener {
+            Log.e("ABOUT", "CLICKED")
+            Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show()
+            showAboutDialog() }
 
         // ---------------------------------------------------------
         // PERMISSIONS
@@ -180,7 +185,7 @@ class MainActivity : AppCompatActivity() {
         val disclaimer_header = getString(R.string.disclaimer_header)
         val disclaimer = getString(R.string.disclaimer_body)
 
-        val message = """
+/*        val message = """
             SpeedAlert v$version
             $author
 
@@ -188,7 +193,14 @@ class MainActivity : AppCompatActivity() {
 
             $disclaimer_header
             $disclaimer
-        """.trimIndent()
+        """.trimIndent() */
+        val message =
+            "SpeedAlert v$version\n" +
+            "$author\n\n" +
+            "$description\n\n" +
+            "$disclaimer_header\n" +
+            "$disclaimer"
+
 
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.about_title))
