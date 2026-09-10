@@ -486,7 +486,7 @@ class FloatingSpeedometer(
     // Helper to scale text not based on setting, but on speed. Make smaller at > 100 kmh or mph
     private fun scaledTextSize(base: Float, scale: Float, value: Int): Float {
         return if (value >= 100) {
-            base * scale * 0.80f   // shrink 3‑digit numbers
+            base * scale * 0.70f   // shrink 3‑digit numbers
         } else {
             base * scale
         }
